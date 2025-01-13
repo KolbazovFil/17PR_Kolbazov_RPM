@@ -1,0 +1,28 @@
+﻿<Window x:Class="_17PR_Kolbazov_RPM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_17PR_Kolbazov_RPM"
+        mc:Ignorable="d"
+        Title="Главная страница" Height="450" Width="800" Background="#E1F5FE">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+            <Button Name ="ButtonBack" Content="Назад" ToolTip="Кликните для возврата на предыдущую страницу" HorizontalAlignment="Left" Width="60" 
+                Grid.Row="0" Margin="5" Click="ButtonBack_OnClick" Background="#2196F3" FontFamily="Segoe UI" VerticalAlignment="Center" Height="30"/>
+            <TextBlock Text="Разработчик: Колбазов Филипп Дионисович группы 2озИСИП-1623" HorizontalAlignment="Center" FontSize="18" Foreground="#2196F3" 
+                   FontFamily="Segoe UI" VerticalAlignment="Center"/>
+            <Button x:Name="btnAddIncomePage" Click="BtnAddIncomePage_Click" Margin="5" Width="70" Background="#2196F3">
+                <TextBlock Text="Добавить доход" TextWrapping="Wrap" TextAlignment="Center" FontSize="12" FontFamily="Segoe UI"/>
+            </Button>
+            <Button x:Name="btnAddExpensePage" Click="BtnAddExpensePage_Click" Margin="5" Width="70" Background="#2196F3">
+                <TextBlock Text="Добавить расход" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+        </StackPanel>
+        <Frame x:Name="mainFrame" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" NavigationUIVisibility="Hidden" Source="/Pages/MainPage.xaml" Navigated="MainFrame_OnNavigated"/>
+    </Grid>
+</Window>
