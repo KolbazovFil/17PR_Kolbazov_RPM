@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _17PR_Kolbazov_RPM.Pages
 {
     public partial class MainPage : Page
     {
-        public MainPage()
+        public ObservableCollection<Transaction> Transactions { get; set; }
+
+        // Конструктор, принимающий коллекцию транзакций
+        public MainPage(ObservableCollection<Transaction> transactions)
         {
             InitializeComponent();
-            TransactionList.ItemsSource = Transactions;
+            Transactions = transactions; // Сохраняем ссылку на коллекцию
+            TransactionList.ItemsSource = Transactions; // Привязка коллекции к элементу управления
         }
-        public ObservableCollection<Transaction> Transactions { get; set; } = new ObservableCollection<Transaction>();
+
+        private void BtnAddIncomePage_Click(object sender, RoutedEventArgs e)
+        {
+            // Передаем коллекцию транзакций в AddIncomePage
+            AddIncomePage addIncomePage = new AddIncomePage(Transactions);
+            NavigationService.Navigate(addIncomePage);
+        }
+
         public class Transaction
         {
             public string Type { get; set; }
